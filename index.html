@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Smart Tech Nyanza — Professional Web & Training</title>
+  <meta name="description" content="Smart Tech Nyanza — Graphic Design, Web & Software Development, Repairs, Premiere Pro & Photoshop Tutorials, Videography & Billboard Photography. Professional training and services in Nyanza, Rwanda." />
+  <meta name="theme-color" content="#111111" />
+
+  <!-- Google font (optional) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" href="logo.png" type="image/png">
+
+  <!-- Font Awesome (icons) -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous" defer></script>
+
+  <style>
+    :root{
+      --bg: #af8809;
+      --panel: #3000a0;
+      --muted: #dfe6da;
+      --accent: #fdff18;
+      --accent-2: #99cc00;
+      --card-bg: rgba(255,255,255,0.03);
+      --radius: 10px;
+      --container-padding: 10%;
+      --max-width: 1200px;
+      --transition: 0.28s cubic-bezier(.2,.9,.3,1);
+      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    /* Reset-ish */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:var(--bg);
+      color: #fff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+    }
+
+    /* Skip link for accessibility */
+    .skip-link{
+      position: absolute;
+      left: -999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .skip-link:focus{
+      left: 10px;
+      top: 10px;
+      width:auto;
+      height:auto;
+      background:#fff;
+      color:#000;
+      padding:8px 12px;
+      z-index:9999;
+      border-radius:6px;
+    }
+
+    .site {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 24px var(--container-padding);
+    }
+
+    header.site-header{
+      text-align:center;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding:36px 20px;
+      border-radius: var(--radius);
+      box-shadow: 0 6px 28px rgba(0,0,0,0.6);
+      margin-top:20px;
+      animation: fadeInDown 700ms ease-out both;
+    }
+    header .logo{
+      width:110px;
+      height:auto;
+      display:block;
+      margin: 0 auto 10px;
+    }
+    header h1{
+      margin:8px 0 6px;
+      color:var(--accent);
+      font-weight:700;
+      font-size: 1.8rem;
+      letter-spacing:0.6px;
+    }
+    header p.lead{
+      margin:0;
+      color:var(--muted);
+      font-weight:400;
+      font-size:0.95rem;
+    }
+
+    /* NAV */
+    nav.main-nav{
+      display:flex;
+      gap:14px;
+      justify-content:center;
+      align-items:center;
+      margin:18px 0;
+      background:var(--panel);
+      padding:10px 12px;
+      border-radius:999px;
+      position:sticky;
+      top:12px;
+      z-index:200;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+      transition: box-shadow var(--transition);
+    }
+    nav.main-nav a{
+      color:#fff;
+      text-decoration:none;
+      padding:8px 12px;
+      border-radius:8px;
+      font-size:0.95rem;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      transition: color var(--transition), transform var(--transition), background var(--transition);
+    }
+    nav.main-nav a:focus{outline: 2px solid var(--accent-2); outline-offset:3px}
+    nav.main-nav a:hover{ color:var(--bg); background:var(--accent); transform: translateY(-3px) }
+
+    /* MAIN SECTION LAYOUT */
+    main{margin:20px 0}
+    section{
+      padding:48px 0;
+      opacity:0;
+      transform: translateY(24px);
+      transition: opacity 520ms ease-out, transform 520ms ease-out;
+    }
+    section.visible{ opacity:1; transform: translateY(0); }
+
+    section h2{
+      color:var(--accent);
+      margin:0 0 12px;
+      font-size:1.3rem;
+    }
+    section p, section li{ color:var(--muted); margin:0; }
+
+    /* SERVICES list */
+    .services ul{
+      list-style:none;
+      padding:0;
+      margin:18px 0 0;
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+      gap:14px;
+    }
+    .service-item{
+      background:var(--card-bg);
+      padding:18px;
+      border-radius:8px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .service-item h3{ margin:0 0 6px; color:#fff; font-size:1rem; }
+    .service-item p{ color:var(--muted); font-size:0.92rem; }
+    .service-item:hover{ transform: translateY(-6px); box-shadow: 0 18px 40px rgba(0,0,0,0.7) }
+
+    /* Buttons */
+    .button-row{ margin-top:16px; display:flex; gap:10px; flex-wrap:wrap; justify-content:center }
+    .btn{
+      background:var(--accent);
+      color:#000;
+      border:none;
+      padding:10px 16px;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:700;
+      text-decoration:none;
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      transition: transform var(--transition), background var(--transition);
+    }
+    .btn:hover{ background:var(--accent-2); transform: translateY(-3px) }
+    .btn.secondary{ background: transparent; color:var(--muted); border:1px solid rgba(255,255,255,0.06) }
+
+    /* CARD CONTAINER for tutorials */
+    .card-container{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+      gap:18px;
+      margin-top:18px;
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding:18px;
+      border-radius:10px;
+      border: 1px solid rgba(255,255,255,0.03);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.6);
+      opacity:0;
+      transform: translateY(16px);
+      transition: opacity 420ms ease-out, transform 420ms ease-out;
+    }
+    .card.revealed{ opacity:1; transform: translateY(0) }
+    .card h4{ margin:0 0 8px; color:#fff }
+    .card p{ color:var(--muted); font-size:0.92rem }
+
+    /* Gallery grid */
+    .gallery{
+      display:grid;
+      gap:12px;
+      grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+      margin-top:16px;
+    }
+    .gallery img{
+      width:100%;
+      height:160px;
+      object-fit:cover;
+      border-radius:8px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+      transition: transform 220ms ease, box-shadow 220ms ease;
+    }
+    .gallery img:focus, .gallery img:hover{ transform: scale(1.03); box-shadow: 0 18px 45px rgba(0,0,0,0.7) }
+
+    /* YouTube previews */
+    .youtube-previews{
+      display:grid;
+      gap:12px;
+      grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+      margin-top:14px;
+    }
+    .youtube-previews iframe{
+      width:100%;
+      height:180px;
+      border-radius:8px;
+      border:0;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+    }
+
+    /* Testimonials */
+    .testimonials{ display:grid; gap:12px; margin-top:12px }
+    .testimonial{
+      background: rgba(255,255,255,0.02);
+      padding:14px;
+      border-left:4px solid var(--accent);
+      border-radius:8px;
+      color:var(--muted);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+    }
+    .testimonial p{ margin:0 0 6px }
+    .testimonial cite{ color:#fff; font-weight:600 }
+
+    /* Contact & Location */
+    .contact-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:18px; margin-top:12px }
+    .contact-card{
+      background:var(--card-bg); padding:16px; border-radius:8px; border:1px solid rgba(255,255,255,0.03);
+    }
+    .contact-card a{ color:var(--accent); text-decoration:none; font-weight:600 }
+    .contact-card a:hover{ color:var(--accent-2) }
+
+    /* Footer */
+    footer.site-footer{
+      margin-top:28px;
+      padding:18px;
+      text-align:center;
+      color:var(--muted);
+      font-size:0.9rem;
+    }
+
+    /* small screens */
+    @media (max-width:900px){ .contact-grid{ grid-template-columns: 1fr } }
+    @media (max-width:520px){ header h1{ font-size:1.3rem } }
+
+    /* KEYFRAMES */
+    @keyframes fadeInDown{
+      from{ opacity:0; transform: translateY(-18px) }
+      to{ opacity:1; transform: translateY(0) }
+    }
+
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <div class="site">
+
+    <!-- Header -->
+    <header class="site-header" role="banner" aria-label="Smart Tech Nyanza header">
+      <img src="logo.png" alt="Smart Tech Nyanza logo" class="logo" loading="lazy">
+      <h1>Smart Tech Nyanza</h1>
+      <p class="lead">Professional Graphic Design • Websites & Software • Repairs • Premiere Pro & Photoshop Training • Videography</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="main-nav" role="navigation" aria-label="Primary navigation">
+      <a href="#header"><i class="fas fa-home" aria-hidden="true"></i><span>Home</span></a>
+      <a href="#services"><i class="fas fa-cogs" aria-hidden="true"></i><span>Services</span></a>
+      <a href="#training"><i class="fas fa-chalkboard-teacher" aria-hidden="true"></i><span>Tutorials</span></a>
+      <a href="#gallery"><i class="fas fa-image" aria-hidden="true"></i><span>Gallery</span></a>
+      <a href="#testimonials"><i class="fas fa-users" aria-hidden="true"></i><span>Testimonials</span></a>
+      <a href="#contact"><i class="fas fa-envelope" aria-hidden="true"></i><span>Contact</span></a>
+      <a href="#location"><i class="fas fa-map-marker-alt" aria-hidden="true"></i><span>Location</span></a>
+    </nav>
+
+    <!-- Main content -->
+    <main id="main" role="main">
+
+      <!-- SERVICES -->
+      <section id="services" class="services" aria-labelledby="services-heading">
+        <h2 id="services-heading">Our Services</h2>
+        <p>We provide modern digital services and training designed for individuals, businesses, and creators.</p>
+
+        <ul aria-hidden="false">
+          <li class="service-item" role="article">
+            <h3>Software & Website Development</h3>
+            <p>Custom websites, webapps and maintenance tailored to your goals.</p>
+          </li>
+          <li class="service-item" role="article">
+            <h3>Graphic Design & Billboard Photography</h3>
+            <p>Logos, marketing creatives and large-format photography for billboards.</p>
+          </li>
+          <li class="service-item" role="article">
+            <h3>Video Editing & Premiere Pro</h3>
+            <p>Professional editing, motion graphics and training for creators.</p>
+          </li>
+          <li class="service-item" role="article">
+            <h3>Photoshop & Creative Workshops</h3>
+            <p>Practical Photoshop training and creative guidance for designers.</p>
+          </li>
+          <li class="service-item" role="article">
+            <h3>Repairs — Phones, PCs & TVs</h3>
+            <p>Fast, quality repair service with diagnostic reports.</p>
+          </li>
+          <li class="service-item" role="article">
+            <h3>Accessories Sales</h3>
+            <p>Reliable phone and computer accessories, tested and guaranteed.</p>
+          </li>
+        </ul>
+
+        <div class="button-row" role="group" aria-label="Contact actions">
+          <a class="btn" href="tel:+250788661936" aria-label="Call Smart Tech Nyanza"> <i class="fas fa-phone" aria-hidden="true"></i> Call: 0788 661 936</a>
+          <a class="btn" href="mailto:smarttechnyanza@gmail.com" aria-label="Email Smart Tech Nyanza"> <i class="fas fa-envelope" aria-hidden="true"></i> Email Us</a>
+          <a class="btn" href="https://wa.me/250788661936" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"> <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>
+        </div>
+      </section>
+
+      <!-- TRAINING / TUTORIALS -->
+      <section id="training" aria-labelledby="training-heading">
+        <h2 id="training-heading">Tutorials & Training</h2>
+        <p>Hands-on courses for beginners and advanced learners — practical projects, not just theory.</p>
+
+        <div class="card-container" role="list" aria-label="Training offerings">
+          <article class="card" role="listitem">
+            <h4>Adobe Premiere Pro</h4>
+            <p>Editing workflows, color grading and export settings for YouTube & social.</p>
+          </article>
+          <article class="card" role="listitem">
+            <h4>Adobe Photoshop</h4>
+            <p>Retouching, compositing and design techniques for digital creatives.</p>
+          </article>
+          <article class="card" role="listitem">
+            <h4>Billboard Photography</h4>
+            <p>Large-format capture, lighting and post-processing for outdoor ads.</p>
+          </article>
+          <article class="card" role="listitem">
+            <h4>Videography</h4>
+            <p>From pre-production and camera operation to editing and delivery.</p>
+          </article>
+        </div>
+
+        <div class="button-row">
+          <a class="btn secondary" href="https://www.youtube.com/@SMARTTECHNYANZA" target="_blank" rel="noopener" aria-label="Visit our YouTube channel">Watch Tutorials on YouTube</a>
+        </div>
+
+        <!-- YouTube previews (lazy) -->
+        <div class="youtube-previews" aria-hidden="false" aria-label="Video previews">
+          <iframe loading="lazy" src="https://www.youtube.com/@SMARTTECHNYANZA" title="Tutorial preview 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe loading="lazy" src="https://www.facebook.com/share/1GVHDvjH1q/" title="Tutorial preview 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe loading="lazy" src="https://www.instagram.com/smat_tech_nyanza?" title="Tutorial preview 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <iframe loading="lazy" src="https://x.com/smarttechnyanza?" title="Tutorial preview 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+      </section>
+
+      <!-- GALLERY -->
+      <section id="gallery" aria-labelledby="gallery-heading">
+        <h2 id="gallery-heading">Gallery</h2>
+        <p>Selected work and behind-the-scenes from our projects.</p>
+        <div class="gallery" role="list" aria-label="Project photos">
+          <img src="img1.jpg" alt="Smart Tech Nyanza — website development project" loading="lazy" role="img">
+          <img src="img2.jpg" alt="Repair work on a laptop" loading="lazy" role="img">
+          <img src="img3.jpg" alt="IT training session" loading="lazy" role="img">
+        </div>
+      </section>
+
+      <!-- TESTIMONIALS -->
+      <section id="testimonials" aria-labelledby="testimonials-heading">
+        <h2 id="testimonials-heading">Testimonials</h2>
+        <div class="testimonials" role="list" aria-label="Customer testimonials">
+          <blockquote class="testimonial" role="article">
+            <p>"Smart Tech Nyanza taught me Premiere Pro clearly — now I produce professional videos for clients."</p>
+            <cite>- Client A</cite>
+          </blockquote>
+          <blockquote class="testimonial" role="article">
+            <p>"Repairs were fast and reliable — they explained everything and followed up."</p>
+            <cite>- Client B</cite>
+          </blockquote>
+          <blockquote class="testimonial" role="article">
+            <p>"Photoshop classes improved my design skills and confidence."</p>
+            <cite>- Client C</cite>
+          </blockquote>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" aria-labelledby="contact-heading">
+        <h2 id="contact-heading">Contact</h2>
+        <p>Reach out for quotes, training schedules, or project inquiries.</p>
+
+        <div class="contact-grid" role="group" aria-label="Contact information">
+          <div class="contact-card">
+            <h4>Contact Details</h4>
+            <p>Phone: <a href="tel:+250788661936" aria-label="Call Smart Tech Nyanza">+250 788 661 936</a></p>
+            <p>Email: <a href="mailto:smarttechnyanza@gmail.com" aria-label="Email Smart Tech Nyanza">smarttechnyanza@gmail.com</a></p>
+            <p>WhatsApp: <a href="https://wa.me/250788661936" target="_blank" rel="noopener" aria-label="Open WhatsApp chat">+250 788 661 936</a></p>
+          </div>
+
+          <div class="contact-card">
+            <h4>Business Hours</h4>
+            <p>Mon - Fri: 7:00 — 20:00</p>
+            <p>Sat: 9:00 — 18:00</p>
+            <p>Sun & Public Holidays: Closed (by appointment)</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- LOCATION -->
+      <section id="location" aria-labelledby="location-heading">
+        <h2 id="location-heading">Location</h2>
+        <p>Find us in Nyanza, Rwanda — visit the workshop or book a consultation.</p>
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h4>Address</h4>
+            <p>Nyanza, Southern Province, Rwanda</p>
+            <p><a href="https://www.google.com/maps/place/Nyanza,+Rwanda" target="_blank" rel="noopener" aria-label="Open Google Maps">Open in Google Maps</a></p>
+          </div>
+
+          <div class="contact-card">
+            <h4>Map</h4>
+            <!-- Lazy-loadable map embed -->
+            <iframe loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31610.123456789!2d29.6!3d-2.3!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x...:0x...!2sNyanza,+Rwanda!5e0!3m2!1sen!2srw!4v0000000000000" title="Map to Smart Tech Nyanza" style="width:100%;height:180px;border:0;border-radius:8px;"></iframe>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer" role="contentinfo">
+      <p>&copy; <span id="year"></span> Smart Tech Nyanza. All Rights Reserved.</p>
+      <p><small>Made with care • Professional digital services & training</small></p>
+    </footer>
+
+  </div>
+
+  <!-- SCRIPT: IntersectionObserver + Stagger reveal -->
+  <script>
+    // Set year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Wait for DOM ready
+    (function(){
+      const sections = document.querySelectorAll('main section');
+      const cards = document.querySelectorAll('.card');
+
+      const io = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.18 });
+
+      sections.forEach(s => io.observe(s));
+
+      // Stagger reveal for cards inside a section
+      const revealCardsObserver = new IntersectionObserver((entries, obs) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            const container = e.target.querySelector('.card-container');
+            if (container) {
+              const items = container.querySelectorAll('.card');
+              items.forEach((it, i) => {
+                setTimeout(() => it.classList.add('revealed'), i * 120);
+              });
+            }
+            obs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.18 });
+
+      // Observe sections that may contain card-container
+      document.querySelectorAll('main section').forEach(s => revealCardsObserver.observe(s));
+
+      // For cards outside container (defensive)
+      cards.forEach((c,i) => {
+        // If card still hidden after some time, reveal anyway (graceful fallback)
+        setTimeout(() => { if (!c.classList.contains('revealed')) c.classList.add('revealed'); }, 3000 + i*120);
+      });
+
+      // Small enhancement: reduce motion if user prefers reduced-motion
+      const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+      if (mq.matches) {
+        document.querySelectorAll('*').forEach(el => el.style.transition = 'none');
+      }
+    })();
+  </script>
+</body>
+</html>
+<style>
+  section {
+    padding:48px 0;
+    opacity:0;
+    transform: translateY(24px);
+    transition: opacity 520ms ease-out, transform 520ms ease-out;
+    will-change: opacity, transform;
+  }
+  section.visible {
+    opacity:1;
+    transform: translateY(0);
+  }
+
+  .card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    padding:18px;
+    border-radius:10px;
+    border: 1px solid rgba(255,255,255,0.03);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.6);
+    opacity:0;
+    transform: translateY(24px);
+    transition: opacity 420ms ease-out, transform 420ms ease-out;
+    will-change: opacity, transform;
+  }
+  .card.revealed {
+    opacity:1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  (function(){
+    // Observe sections
+    const sections = document.querySelectorAll('main section');
+    const sectionObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    sections.forEach(s => sectionObserver.observe(s));
+
+    // Observe cards with stagger
+    const cards = document.querySelectorAll('.card');
+    const cardObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const cards = e.target.querySelectorAll('.card');
+          if (cards.length) {
+            cards.forEach((c, i) => {
+              setTimeout(() => c.classList.add('revealed'), i * 150);
+            });
+          }
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    sections.forEach(s => cardObserver.observe(s));
+
+    // Fallback: if any card never triggered
+    cards.forEach((c, i) => {
+      setTimeout(() => {
+        if (!c.classList.contains('revealed')) c.classList.add('revealed');
+      }, 4000 + i * 150);
+    });
+  })();
+</script>
+</body>.<!-- ================= Footer ================= -->
+<footer class="site-footer" role="contentinfo">
+  <p>&copy; <span id="year"></span> Smart Tech Nyanza. All Rights Reserved.</p>
+  <p><small>Made with care • Professional digital services & training</small></p>
+</footer>
+
+</div> <!-- end .site -->
+
+<!-- ================= Scripts ================= -->
+<script>
+  // Year auto update
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Reveal sections
+  const sections = document.querySelectorAll("main section");
+  const sectionObserver = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  sections.forEach(s => sectionObserver.observe(s));
+
+  // Reveal cards one by one (staggered)
+  const cards = document.querySelectorAll(".card");
+  const cardObserver = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // delay animation a bit for stagger effect
+        setTimeout(() => entry.target.classList.add("revealed"), 150);
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  cards.forEach(c => cardObserver.observe(c));
+</script>
+</body>
+</html>
